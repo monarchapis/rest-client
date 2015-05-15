@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.monarchapis</groupId>
 	<artifactId>rest-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.8.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
