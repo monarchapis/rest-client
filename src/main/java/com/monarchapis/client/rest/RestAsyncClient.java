@@ -67,33 +67,6 @@ public class RestAsyncClient extends BaseClient<RestAsyncClient> {
 		});
 	}
 
-	/**
-	 * Sends an HTTP request using the parameters and headers previously set.
-	 * 
-	 * @throws RestException
-	 *             if request was unsuccessful
-	 */
-	public void send(final VoidCallback callback) throws RestException {
-		HttpRequestBase request = prepareRequest();
-
-		client.execute(request, new FutureCallback<HttpResponse>() {
-			@Override
-			public void failed(Exception ex) {
-				callback.failed(ex);
-			}
-
-			@Override
-			public void completed(HttpResponse response) {
-				callback.completed();
-			}
-
-			@Override
-			public void cancelled() {
-				callback.cancelled();
-			}
-		});
-	}
-
 	public <T> AsyncFuture<T> future(Callback<T> callback) {
 		return new AsyncFuture<T>(callback);
 	}

@@ -138,8 +138,13 @@ public abstract class AbstractResource {
 		return parseAs(response.getResponseBody(), reference);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected static <T> T parseAs(String response, Class<T> clazz) {
 		try {
+			if (clazz == Void.class) {
+				return (T) Void.TYPE;
+			}
+
 			return MAPPER.readValue(response, clazz);
 		} catch (Exception e) {
 			throw new RestException(e);
