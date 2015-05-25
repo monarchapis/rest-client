@@ -83,8 +83,7 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 			String content = "";
 
 			if (httpContent != null) {
-				mimeType = StringUtils.trim(StringUtils.substringBefore(client.getContentType(),
-						";"));
+				mimeType = StringUtils.trimToEmpty(StringUtils.substringBefore(client.getContentType(), ";"));
 				content = httpContent;
 			}
 
@@ -102,8 +101,7 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 		}
 	}
 
-	private String getHawkHeader(BaseClient<?> client, String accessToken, String payloadHash,
-			String extData) {
+	private String getHawkHeader(BaseClient<?> client, String accessToken, String payloadHash, String extData) {
 		try {
 			StringBuilder sb = new StringBuilder();
 
@@ -156,11 +154,10 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 			byte[] hash = mac256.doFinal(stringData.getBytes("UTF-8"));
 			String mac = Base64.encodeBase64String(hash);
 
-			return "Hawk id=\"" + (accessToken != null ? accessToken : apiKey) + "\", ts=\"" + ts
-					+ "\", nonce=\"" + nonce + "\""
-					+ (payloadHash != null ? ", hash=\"" + payloadHash + "\"" : "")
-					+ (extData != null ? ", ext=\"" + extData + "\"," : "") + ", mac=\"" + mac
-					+ "\"" + (accessToken != null ? ", app=\"" + apiKey + "\"" : "");
+			return "Hawk id=\"" + (accessToken != null ? accessToken : apiKey) + "\", ts=\"" + ts + "\", nonce=\""
+					+ nonce + "\"" + (payloadHash != null ? ", hash=\"" + payloadHash + "\"" : "")
+					+ (extData != null ? ", ext=\"" + extData + "\"," : "") + ", mac=\"" + mac + "\""
+					+ (accessToken != null ? ", app=\"" + apiKey + "\"" : "");
 		} catch (Exception e) {
 			throw new RuntimeException("Could not create hawk header", e);
 		}

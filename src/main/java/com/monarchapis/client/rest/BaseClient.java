@@ -612,10 +612,6 @@ public abstract class BaseClient<T extends BaseClient<T>> {
 	public String getContentType() {
 		String contentType = getHeader("Content-Type");
 
-		if (contentType == null) {
-			contentType = ContentType.APPLICATION_FORM_URLENCODED.getMimeType();
-		}
-
 		return contentType;
 	}
 
