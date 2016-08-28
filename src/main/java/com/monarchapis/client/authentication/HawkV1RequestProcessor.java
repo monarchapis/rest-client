@@ -110,6 +110,8 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 
 			URI uri = URI.create(client.getUrl());
 
+			System.out.println("HawkV1RequestProcessor::getHawkHeader");
+
 			sb.append("hawk.1.header\n");
 			sb.append(ts);
 			sb.append("\n");
@@ -118,6 +120,12 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 			sb.append(client.getMethod());
 			sb.append("\n");
 			sb.append(uri.getRawPath());
+
+			if (uri.getRawQuery() != null) {
+				sb.append("?");
+				sb.append(uri.getRawQuery());
+			}
+
 			sb.append("\n");
 			sb.append(uri.getHost());
 			sb.append("\n");
