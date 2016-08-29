@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.monarchapis</groupId>
 	<artifactId>rest-client</artifactId>
-	<version>0.8.1</version>
+	<version>0.8.4</version>
 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -135,12 +135,12 @@
 
 	<reporting>
 		<plugins>
-			<!--javaoc -->
+			<!--javadoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.1</version>
-				<configuration></configuration>
+				<configuration/>
 			</plugin>
 
 			<!--findbugs -->

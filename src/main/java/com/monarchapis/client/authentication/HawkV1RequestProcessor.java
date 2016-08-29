@@ -118,6 +118,12 @@ public class HawkV1RequestProcessor implements RequestProcessor {
 			sb.append(client.getMethod());
 			sb.append("\n");
 			sb.append(uri.getRawPath());
+
+			if (uri.getRawQuery() != null) {
+				sb.append("?");
+				sb.append(uri.getRawQuery());
+			}
+
 			sb.append("\n");
 			sb.append(uri.getHost());
 			sb.append("\n");

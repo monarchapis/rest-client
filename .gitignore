@@ -3,6 +3,8 @@ target
 .classpath
 .project
 .settings
+.idea
+*.iml
 
 # OS generated files #
 ######################
